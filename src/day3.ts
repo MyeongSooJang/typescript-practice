@@ -5,7 +5,7 @@ enum OrderStatus {
     Cancelled = "CANCELLED"
 }
 
-const config = {host: "localhost", prot: 3000, debug: true};
+const config = {host: "localhost", port: 3000, debug: true};
 
 type ConfigKey = keyof typeof config;
 
@@ -17,13 +17,12 @@ interface User {
     id: number;
     name: string;
     email: string;
-    pawsword: string;
+    password: string;
 }
 
 type PartialUser = Partial<User>;
 type ReadonlyUser = Readonly<User>;
 type PickedUser = Pick<User, "id" | "name">;
 type UserWithoutPassword = Omit<User, "password">; 
-type UserRecord = Record<string, User>; // Map<String, User>와 동일
-
+type UserRecord = Record<string, User>; 
 type UpdateUser = Pick<User, "id"> & Partial<Omit<User, "id">>;
